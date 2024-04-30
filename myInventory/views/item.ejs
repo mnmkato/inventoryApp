@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= item.name %></h1>
+    <p><%= item.quantity %> <%= item.unit %></p>
+    <p><a href="<%= item.category.url %>"><%= item.category.name %></a></p>
+  </body>
+</html>

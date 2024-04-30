@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
-
-const categorySchema = new mongoose.Schema({
+const Schema = mongoose.Schema
+const categorySchema = new Schema({
   name: {
     type: String,
     required: true
-  }});
+  },
+ items:[{
+    type:Schema.Types.ObjectId,
+    ref:"Item"
+ }]    
+});
 
 categorySchema.virtual("url").get(function () {
     return `/browse/category/${this._id}`

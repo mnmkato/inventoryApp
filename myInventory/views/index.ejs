@@ -7,9 +7,9 @@
   <body>
     <h1><%= title %></h1>
     <ul>
-      <% categories.forEach(category => { %>
+      <% list.forEach(listItem => { %>
         <li>
-          <a href="<%= category.url %>"><%= category.name %></a>
+          <a href="<%= listItem.url %>"><%= listItem.name %></a>
         </li>
       <% }) %>
     </ul>
