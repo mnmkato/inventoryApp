@@ -8,5 +8,4 @@ exports.item_details = asyncHandler(async function(req, res, next) {
         title: selectedItem.name,
         item: selectedItem
     })
-    res.send('Item details page');
   })
