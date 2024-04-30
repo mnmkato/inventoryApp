@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const browseRouter = require('./routes/browse');
-
+const mongoose = require('mongoose');
 var app = express();
 
 // view engine setup
@@ -23,6 +23,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/browse', browseRouter);
 app.use('/users', usersRouter);
+
+
+// Connect to MongoDB
+mongoose.set('strictQuery','false')
+const mongoDB_url = 'mongodb+srv://katsmamal:QVn7N8UQoq7R2Rnx@cluster0.xx5vlyk.mongodb.net/inventory?retryWrites=true&w=majority&appName=Cluster0'
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB_url);
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
