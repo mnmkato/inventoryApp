@@ -106,7 +106,7 @@ exports.item_edit_post = asyncHandler( async function(req, res, next) {
     await updatedItem.save();
 
     console.log('Item saved successfully');
-    res.redirect(`/browse/category/${categoryId}`);
+    res.redirect(updatedItem.url);
   } catch (error) {
     console.error('Error saving item:', error);
     res.status(500).send('Error saving item');

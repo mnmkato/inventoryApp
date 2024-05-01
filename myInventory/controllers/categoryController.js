@@ -49,7 +49,7 @@ exports.category_create_post = asyncHandler( async function(req, res, next) {
   }
 ) 
 
-// EDIT ITEM CONTROLLERS
+// EDIT CATEGORY CONTROLLERS
 exports.category_edit_get = asyncHandler( async function(req, res, next) {   
   const category = await Category.findById(req.params.id).exec()
   
@@ -79,5 +79,34 @@ exports.category_edit_post = asyncHandler( async function(req, res, next) {
     console.error('Error saving category:', error);
     res.status(500).send('Error saving category');
   }
+  }
+)
+
+// DELETE CATEGORY CONTROLLERS
+exports.category_delete_get = asyncHandler( async function(req, res, next) {   
+  const category = await Category.findById(req.params.id).exec()
+  res.render('category_form_delete',{category:category});
+  }
+) 
+exports.category_delete_post = asyncHandler( async function(req, res, next) {   
+  try {
+      // Sanitize the item ID
+      const categoryId = req.body.categoryId.trim();
+
+      // Delete each item in the category
+      const itemsInCategory = await Item.find({category:categoryId});
+      await Promise.all(itemsInCategory.map(async item => {
+        await Item.findByIdAndDelete(item._id);
+      }));
+
+      // Delete the item from the database
+      await Category.findByIdAndDelete(categoryId);
+
+      console.log('Category deleted successfully');
+      res.redirect(`/browse`);
+    } catch (error) {
+      console.error('Error deleting category:', error);
+      res.status(500).send('Error deleting category');
+    }
   }
 ) 
