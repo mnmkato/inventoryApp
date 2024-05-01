@@ -35,10 +35,12 @@ exports.category_create_post = asyncHandler( async function(req, res, next) {
     try {
       // Sanitize the category name
       const categoryName = req.body.category_name.trim();
+      const categoryDescription = req.body.category_description.trim();
 
       // Create a new Category instance
       const newCategory = new Category({
-      name: categoryName
+      name: categoryName,
+      description: categoryDescription
       });
       await newCategory.save()
       res.redirect('/browse');
@@ -63,11 +65,13 @@ exports.category_edit_post = asyncHandler( async function(req, res, next) {
   try {
     // Sanitize the category data
     const categoryName = req.body.category_name.trim();
+    const categoryDescription = req.body.category_description.trim();
     const categoryId = req.params.id; 
 
     // find a new category to update
     const updatedCategory = await Category.findByIdAndUpdate(categoryId, {
-      name: categoryName
+      name: categoryName,
+      description: categoryDescription
     });
 
     // Save the item to the database

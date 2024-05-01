@@ -9,6 +9,8 @@
     <form method="post">
         <label for="category_name">Enter cateogry name</label>
         <input type="text" name="category_name" id="category_name" value="<%= typeof category === 'undefined' ? '' : category.name %>">
+        <label for="category_description">Enter cateogry description</label>
+        <input type="text" name="category_description" id="category_description" value="<%= typeof category === 'undefined' ? '' : category.description %>">
         <input type="submit" value="Submit">
     </form>
   </body>

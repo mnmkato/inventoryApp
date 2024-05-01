@@ -15,7 +15,7 @@
         <input type="number" name="item_quantity" id="item_quantity" value="<%= typeof item === 'undefined' ? '' : item.quantity %>" required>
         <label for="item_unit">Enter item unit name</label>
         <input type="text" name="item_unit" id="item_unit" value="<%= typeof item === 'undefined' ? '' : item.unit%>" required>
-        <label for="item_price">Enter item price</label>
+        <label for="item_price">Enter item price in UGX</label>
         <input type="number" name="item_price" id="item_price" value="<%= typeof item === 'undefined' ? '' : item.price %>" required>
         <input type="hidden" name="category_id" value="<%= category_id %>">
         <input type="submit" value="Submit">
