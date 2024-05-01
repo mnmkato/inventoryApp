@@ -26,7 +26,7 @@ exports.category_details = asyncHandler( async function(req, res, next) {
   }
 ) 
 exports.category_create_get = asyncHandler( async function(req, res, next) {   
-  res.render('category_new',{
+  res.render('category_form',{
     title: "Create new category"
   });
   }
@@ -49,3 +49,35 @@ exports.category_create_post = asyncHandler( async function(req, res, next) {
   }
 ) 
 
+// EDIT ITEM CONTROLLERS
+exports.category_edit_get = asyncHandler( async function(req, res, next) {   
+  const category = await Category.findById(req.params.id).exec()
+  
+  res.render('category_form',{
+    title: `Edit item: ${category.name}`,
+    category:category
+  });
+  }
+) 
+exports.category_edit_post = asyncHandler( async function(req, res, next) {   
+  try {
+    // Sanitize the category data
+    const categoryName = req.body.category_name.trim();
+    const categoryId = req.params.id; 
+
+    // find a new category to update
+    const updatedCategory = await Category.findByIdAndUpdate(categoryId, {
+      name: categoryName
+    });
+
+    // Save the item to the database
+    await updatedCategory.save();
+
+    console.log('Category saved successfully');
+    res.redirect(updatedCategory.url);
+  } catch (error) {
+    console.error('Error saving category:', error);
+    res.status(500).send('Error saving category');
+  }
+  }
+) 

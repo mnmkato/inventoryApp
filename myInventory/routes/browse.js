@@ -16,6 +16,12 @@ router.post('/category/create', categoryController.category_create_post);
 /* GET category details page. */
 router.get('/category/:id', categoryController.category_details);
 
+/* GET category item page. */
+router.get('/category/:id/editCategory', categoryController.category_edit_get);
+
+/* POST category item form data */
+router.post('/category/:id/editCategory', categoryController.category_edit_post);
+
 // ITEM ROUTES
 /* GET item details page. */
 router.get('/item/:id', itemController.item_details);

@@ -6,9 +6,9 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <form action="/browse/category/create" method="post">
+    <form method="post">
         <label for="category_name">Enter cateogry name</label>
-        <input type="text" name="category_name" id="category_name">
+        <input type="text" name="category_name" id="category_name" value="<%= category === undefined ? '' : category.name %>">
         <input type="submit" value="Submit">
     </form>
   </body>
