@@ -20,10 +20,16 @@ router.get('/category/:id', categoryController.category_details);
 /* GET item details page. */
 router.get('/item/:id', itemController.item_details);
 
-/* GET add new item to category page. */
-router.get('/category/:id/addItem', itemController.item_new_get);
+/* GET delete item page. */
+router.get('/item/:id/delete', itemController.item_delete_get);
+
+/* POST delete item form. */
+router.post('/item/:id/delete', itemController.item_delete_post);
+
+/* GET edit category page. */
+router.get('/category/:id/editItem', itemController.item_new_get);
 
 /* POST category form data */
-router.post('/category/:id/addItem', itemController.item_new_post);
+router.post('/category/:id/editItem', itemController.item_new_post);
 
 module.exports = router;

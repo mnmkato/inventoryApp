@@ -46,4 +46,29 @@ exports.item_details = asyncHandler(async function(req, res, next) {
     }
   ) 
   
+  exports.item_delete_get = asyncHandler( async function(req, res, next) {   
+    const item = await Item.findById(req.params.id).exec()
+    res.render('item_delete',{item:item});
+    }
+  ) 
+  exports.item_delete_post = asyncHandler( async function(req, res, next) {   
+    try {
+        // Sanitize the item ID
+        const itemId = req.body.itemId.trim();
+
+        const item = await Item.findById(itemId);
+
+        // Delete the item from the database
+        await Item.findByIdAndDelete(itemId);
+
+        console.log('Item deleted successfully');
+        
+        res.redirect(`/browse/category/${item.category}`);
+      } catch (error) {
+        console.error('Error saving item:', error);
+        res.status(500).send('Error saving item');
+      }
+    }
+  ) 
+  
   
