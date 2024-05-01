@@ -6,6 +6,9 @@ const itemSchema = new Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String
+  },
   quantity:{
     type: Number,
     required: true
@@ -17,6 +20,10 @@ const itemSchema = new Schema({
   category:{
     type:Schema.Types.ObjectId,
     ref:"Category"
+  },
+  price:{
+    type: Number,
+    required: true
   }
 });
 

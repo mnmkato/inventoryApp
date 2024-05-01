@@ -24,15 +24,19 @@ exports.item_new_post = asyncHandler( async function(req, res, next) {
   try {
       // Sanitize the item data
       const itemName = req.body.item_name.trim();
+      const itemDescription = req.body.item_description.trim();
       const itemQuantity = parseInt(req.body.item_quantity);
       const itemUnit = req.body.item_unit.trim();
+      const itemPrice = parseInt(req.body.item_price);
       const categoryId = req.body.category_id.trim(); 
 
       // Create a new Item instance
       const newItem = new Item({
         name: itemName,
+        description: itemDescription,
         quantity: itemQuantity,
         unit: itemUnit,
+        price: itemPrice,
         category: categoryId
       });
   
@@ -89,16 +93,20 @@ exports.item_edit_post = asyncHandler( async function(req, res, next) {
   try {
     // Sanitize the item data
     const itemName = req.body.item_name.trim();
+    const itemDescription = req.body.item_description.trim();
     const itemQuantity = parseInt(req.body.item_quantity);
     const itemUnit = req.body.item_unit.trim();
+    const itemPrice = parseInt(req.body.item_price);
     const categoryId = req.body.category_id.trim(); 
     const itemId = req.params.id; 
 
     // find a new Item to update
     const updatedItem = await Item.findByIdAndUpdate(itemId, {
       name: itemName,
+      description: itemDescription,
       quantity: itemQuantity,
       unit: itemUnit,
+      price: itemPrice,
       category: categoryId
     });
 
