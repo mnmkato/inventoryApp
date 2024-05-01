@@ -8,7 +8,7 @@
     <h1><%= title %></h1>
     <form method="post">
         <label for="item_name">Enter item name</label>
-        <input type="text" name="item_name" id="item_name">
+        <input type="text" name="item_name" id="item_name" value="<%= item === undefined ? '' : item.name %>">
         <label for="item_quantity">Enter quantity available</label>
         <input type="number" name="item_quantity" id="item_quantity">
         <label for="item_unit">Enter quantity available</label>

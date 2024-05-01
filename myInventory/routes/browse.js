@@ -26,10 +26,10 @@ router.get('/item/:id/delete', itemController.item_delete_get);
 /* POST delete item form. */
 router.post('/item/:id/delete', itemController.item_delete_post);
 
-/* GET edit category page. */
-router.get('/category/:id/editItem', itemController.item_new_get);
+/* GET edit item page. */
+router.get('/item/:id/editItem', itemController.item_edit_get);
 
-/* POST category form data */
-router.post('/category/:id/editItem', itemController.item_new_post);
+/* POST edit item form data */
+router.post('/item/:id/editItem', itemController.item_edit_post);
 
 module.exports = router;
