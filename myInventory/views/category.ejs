@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title><%= category.name %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <h1><%= category.name %></h1>
     <ul>
       <% list.forEach(listItem => { %>
         <li>
@@ -14,6 +14,6 @@
       <% }) %>
     </ul>
     <hr>
-    <a href="/browse/category/create">Add new category</a>
+    <a href="<%= category.url %>/addItem">Add new item</a>
   </body>
 </html>

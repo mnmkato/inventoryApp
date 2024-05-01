@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/browse/category/create" method="post">
+        <label for="category_name">Enter cateogry name</label>
+        <input type="text" name="category_name" id="category_name">
+        <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

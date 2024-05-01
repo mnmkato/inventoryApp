@@ -19,11 +19,33 @@ exports.category_details = asyncHandler( async function(req, res, next) {
     Item.find({category:req.params.id}).exec()
   ]) 
     
-  res.render('index',{
-    title: category.name,
+  res.render('category',{
+    category: category,
     list: itemsInCategory
   });
-    res.send('Category page with items');
+  }
+) 
+exports.category_create_get = asyncHandler( async function(req, res, next) {   
+  res.render('category_new',{
+    title: "Create new category"
+  });
+  }
+) 
+exports.category_create_post = asyncHandler( async function(req, res, next) {   
+    try {
+      // Sanitize the category name
+      const categoryName = req.body.category_name.trim();
+
+      // Create a new Category instance
+      const newCategory = new Category({
+      name: categoryName
+      });
+      await newCategory.save()
+      res.redirect('/browse');
+    } catch (error) {
+      console.error('Error saving category:', err);
+      res.status(500).send('Error saving category');
+    }
   }
 ) 
 
