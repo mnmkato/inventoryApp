@@ -10,9 +10,9 @@
         <label for="item_name">Enter item name</label>
         <input type="text" name="item_name" id="item_name" value="<%= item === undefined ? '' : item.name %>">
         <label for="item_quantity">Enter quantity available</label>
-        <input type="number" name="item_quantity" id="item_quantity">
-        <label for="item_unit">Enter quantity available</label>
-        <input type="text" name="item_unit" id="item_unit">
+        <input type="number" name="item_quantity" id="item_quantity" value="<%= item === undefined ? '' : item.quantity %>">
+        <label for="item_unit">Enter item unit name</label>
+        <input type="text" name="item_unit" id="item_unit" value="<%= item === undefined ? '' : item.unit%>">
         <input type="hidden" name="category_id" value="<%= category_id %>">
         <input type="submit" value="Submit">
     </form>
